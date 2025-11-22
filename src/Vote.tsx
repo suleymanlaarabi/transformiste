@@ -1,13 +1,8 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { Button, Center, Flex, HStack } from "@chakra-ui/react";
-import App from "./App.tsx";
-import { Provider } from "./components/ui/provider.tsx";
+import { Flex } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { RatingGroup } from "@chakra-ui/react";
 import { useState } from "react";
 import { AbsoluteCenter, ProgressCircle } from "@chakra-ui/react";
-import { ceil } from "three/tsl";
 
 export function Vote() {
   const [value, setValue] = useState(3);

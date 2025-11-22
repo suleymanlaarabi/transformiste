@@ -1,0 +1,15 @@
+import { GridItem, Box } from "@chakra-ui/react"
+import { useUser } from "../../hooks/useUser";
+
+export default function Grid_items() {
+    const user = useUser();
+    const user2 = "Killian"
+
+    return (
+    <GridItem rowSpan={1} colSpan={1}>
+        <Box bg="tomato" h="100%" w="100%" p="4" color="white">
+            {user2}'s final grade : XX.XX {" "}
+        </Box>
+    </GridItem>
+    );
+}
