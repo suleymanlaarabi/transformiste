@@ -16,7 +16,7 @@ export default function Grid_items() {
           count={5}
           defaultValue={score}
           size="sm"
-          color="pink"
+          color="yellow"
         >
           <RatingGroup.HiddenInput />
           <RatingGroup.Control />

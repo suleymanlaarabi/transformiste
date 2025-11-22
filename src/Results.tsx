@@ -34,18 +34,13 @@ export default function Results() {
           marginTop={"auto"}
           marginBottom={"auto"}
         >
-          <Grid
-            h="200px"
-            templateRows="repeat(2, 1fr)"
-            templateColumns="repeat(5, 1fr)"
-            gap={4}
-          >
+          <Flex direction={"column"} gap={4}>
             <Grid_items />
             <Grid_items />
             <Grid_items />
             <Grid_items />
             <Grid_items />
-          </Grid>
+          </Flex>
         </Flex>
       </Box>
     </Flex>
