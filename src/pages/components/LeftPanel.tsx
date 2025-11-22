@@ -1,6 +1,7 @@
 import { Accordion, Button, Span, VStack } from "@chakra-ui/react";
 import type { ReactNode } from "react";
 import { Node, type NodeFC, type NodeProps } from "./Node";
+import { useGLTF } from "@react-three/drei";
 
 type LeftPanelProps = {
   spawnMesh: (node: NodeFC) => void;
@@ -8,7 +9,7 @@ type LeftPanelProps = {
 
 export default function LeftPanel({ spawnMesh }: LeftPanelProps) {
   return (
-    <VStack w={"200px"}>
+    <VStack w={"200px"} ml={4}>
       <Accordion.Root collapsible defaultValue={["b"]}>
         {categories.map((item, index) => (
           <Accordion.Item key={index} value={item.value}>
@@ -19,12 +20,16 @@ export default function LeftPanel({ spawnMesh }: LeftPanelProps) {
             <Accordion.ItemContent>
               <Accordion.ItemBody>
                 <VStack>
-                  {item.items.map((el) => (
+                  {item.items.map((el, i) => (
                     <Button
-                      key={el.name}
+                      key={i}
                       variant={"outline"}
                       w={"full"}
-                      onClick={() => spawnMesh(el.node)}
+                      onClick={() =>
+                        spawnMesh((props) =>
+                          el.node({ ...props, name: el.name })
+                        )
+                      }
                     >
                       {el.name}
                     </Button>
@@ -50,13 +55,19 @@ type Category = {
   items: Item[];
 };
 
+const assets = ["PresetRoueImport"] as const;
+
+assets.forEach((el) => {
+  useGLTF.preload(`/assets/${el}.glb`);
+});
+
 const temp: Item[] = [
   {
-    name: "Epita",
+    name: "PresetRoueImport",
     node: Node,
   },
   {
-    name: "Eglou",
+    name: "PresetRoueImport",
     node: Node,
   },
 ];

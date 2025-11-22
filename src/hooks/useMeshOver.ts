@@ -1,3 +1,4 @@
+import type { ThreeEvent } from "@react-three/fiber";
 import { useState } from "react";
 
 export function useMeshOver() {
@@ -6,7 +7,10 @@ export function useMeshOver() {
   return [
     isOver,
     {
-      onPointerOver: () => setIsOver(true),
+      onPointerOver: (e: ThreeEvent<PointerEvent>) => {
+        e.stopPropagation();
+        setIsOver(true);
+      },
       onPointerOut: () => setIsOver(false),
     },
   ] as const;
