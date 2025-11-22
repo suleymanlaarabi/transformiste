@@ -3,6 +3,7 @@ import Root from "./Root";
 import Home from "./pages/Home";
 import Game from "./pages/Game";
 import { Vote } from "./Vote";
+import Results from "./Results";
 
 
 export const router = createBrowserRouter([
@@ -21,11 +22,11 @@ export const router = createBrowserRouter([
       {
         path: "/vote",
         element: <Vote />,
+      },
+      {
+        path: "/results",
+        element: <Results />,
       }
-      /*{
-        path: "/result"
-        element: <result />,
-      }*/
     ],
   },
 ]);
