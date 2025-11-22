@@ -9,11 +9,12 @@ export default function Results() {
   return (
     <Flex p={4} direction={"column"} h={"100vh"}>
       <Flex
-        bg="grey"
+        bg="white"
         w="100%"
         p="4"
         justify="space-between"
         alignItems="center"
+        color="black"
       >
         <Heading>That's the end, {user.name}! </Heading>
         <Heading marginLeft="auto">Transformist</Heading>

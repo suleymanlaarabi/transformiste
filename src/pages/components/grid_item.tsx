@@ -9,14 +9,14 @@ export default function Grid_items() {
 
   return (
     <GridItem rowSpan={1.2}>
-      <Box bg="tomato" h="100%" w="100%" p="4" color="white" borderRadius="l3">
+      <Box bg="white" h="100%" w="100%" p="4" color="black" borderRadius="l3">
         {user2}'s final grade :{" "}
         <RatingGroup.Root
           readOnly
           count={5}
           defaultValue={score}
           size="sm"
-          color="yellow"
+          colorPalette="yellow"
         >
           <RatingGroup.HiddenInput />
           <RatingGroup.Control />

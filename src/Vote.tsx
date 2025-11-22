@@ -10,31 +10,34 @@ export function Vote() {
   return (
     <>
       <Flex
-        bg="grey"
+        bg="white"
         w="100%"
         p="4"
         justify="space-between"
         alignItems="center"
+        color="black"
       >
-        <RatingGroup.Root
-          count={5}
-          value={value}
-          onValueChange={(e) => setValue(e.value)}
-          allowHalf
-          colorPalette={"yellow"}
-        >
-          <RatingGroup.HiddenInput />
-          <RatingGroup.Control />
-        </RatingGroup.Root>
         <Box
-          background="grey"
+          background="white"
           borderColor="border.disabled"
-          width="20"
+          width="200px"
           padding="4"
-          color="white"
+          color="black"
         >
-          Player name
+          username
         </Box>
+        <AbsoluteCenter axis={"horizontal"}>
+          <RatingGroup.Root
+            count={5}
+            value={value}
+            onValueChange={(e) => setValue(e.value)}
+            allowHalf
+            colorPalette={"yellow"}
+          >
+            <RatingGroup.HiddenInput />
+            <RatingGroup.Control />
+          </RatingGroup.Root>
+        </AbsoluteCenter>
         <ProgressCircle.Root colorPalette="black" value={Time}>
           <ProgressCircle.Circle>
             <ProgressCircle.Track />
