@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Button, Flex, HStack } from "@chakra-ui/react";
-import { Provider } from "@/components/ui/provider";
 import { AbsoluteCenter, Box, For, Text, VStack } from "@chakra-ui/react";
 import { Center, Circle, Square } from "@chakra-ui/react";
 import React from "react";
@@ -9,6 +8,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import { FlakesTexture } from "three/examples/jsm/Addons.js";
 import { Field, Input } from "@chakra-ui/react"
+import { Provider } from "./components/ui/provider.tsx";
 
 function launch() {
    const start_b = document.getElementById("start") as HTMLButtonElement;
@@ -20,15 +20,18 @@ function launch() {
 
 }
 
-
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Provider>
-      <Flex justifyContent={"flex-start"}>
+function Title() {
+  return <Flex justifyContent={"flex-start"}>
         <Box background="blue.solid" width="100%" p="7" color="white">
           Transformist
         </Box>
       </Flex>
+}
+
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+     {/* <Title/>
       <Flex justifyContent={"flex-end"} width="100%" >
         <Box marginLeft="auto" background="grey" width="25%" p="23rem" color="white"></Box>
       </Flex>
@@ -45,8 +48,7 @@ createRoot(document.getElementById("root")!).render(
             <Button id="loading" loading loadingText="Jumping in, please wait!" colorPalette="pink" variant="solid" size="xl" rounded="xl" onClick={launch} hidden disabled />
           </HStack>
         </Box>
-      </Flex>
+      </Flex> */}
       <App />
-    </Provider>
   </StrictMode>
 );
