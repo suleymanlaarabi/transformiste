@@ -32,7 +32,6 @@ export default function Results() {
                         <Grid_items/>
                         <Grid_items/>
                         <Grid_items/>
-                        <Grid_items/>
                     </Grid>
                 </Flex>
             </Box>

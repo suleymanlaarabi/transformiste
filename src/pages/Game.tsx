@@ -17,7 +17,7 @@ export default function Game() {
   return (
     <Flex p={4} direction={"column"} h={"100vh"}>
       <Heading>
-        Good game {user.name}{" "}
+        Have a good game, {user.name}!{" "}
         <Button
           size={"xs"}
           onClick={() => {

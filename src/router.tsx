@@ -5,7 +5,6 @@ import Game from "./pages/Game";
 import { Vote } from "./Vote";
 import Results from "./Results";
 
-
 export const router = createBrowserRouter([
   {
     path: "/",
