@@ -8,9 +8,20 @@ export default function Results() {
 
     return (
         <Flex p={4} direction={"column"} h={"100vh"}>
-            <Heading>
-                Have a good game, {user.name}! {" "}
-            </Heading>
+            <Flex
+                bg="grey"
+                w="100%"
+                p="4"
+                justify="space-between"
+                alignItems="center"
+              >
+                <Heading>
+                    That's the end, {user.name}! {" "}
+                </Heading>
+                <Heading marginLeft="auto">
+                    Transformist
+                </Heading>
+            </Flex>  
             <Box marginLeft={"auto"} marginRight={"auto"} marginTop={"auto"} marginBottom={"auto"}>
                 <Heading marginLeft={"auto"} marginRight={"auto"}>
                     It's time for the results!
@@ -27,14 +38,10 @@ export default function Results() {
                         <Grid_items/>
                         <Grid_items/>
                         <Grid_items/>
-                        <Grid_items/>
-                        <Grid_items/>
-                        <Grid_items/>
-                        <Grid_items/>
-                        <Grid_items/>
                     </Grid>
                 </Flex>
             </Box>
-        </Flex>
+  
+    </Flex>
     );
 }
