@@ -3,6 +3,7 @@ import { Button, Flex, Heading, Input, Text, VStack } from "@chakra-ui/react";
 import { useSetAtom } from "jotai";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { client } from "../apiClient";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -11,8 +12,10 @@ export default function Home() {
   const setUser = useSetAtom(userAtom);
 
   const onSubmit = handleSubmit((user) => {
-    setUser(user);
-    navigate("/game");
+    client.register.post(user).then(() => {
+      setUser(user);
+      navigate("/game");
+    });
   });
 
   return (

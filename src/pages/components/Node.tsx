@@ -1,47 +1,42 @@
 import { TransformControls, useGLTF } from "@react-three/drei";
-import { useMeshOver } from "../../hooks/useMeshOver";
-import { useRef, type ReactNode, type RefObject } from "react";
-import { Mesh, Vector3 } from "three";
+import { useAtomValue } from "jotai";
+import { type ReactNode, type RefObject, useRef } from "react";
+import { Vector3 } from "three";
+import { settingsAtom } from "../../atoms";
 
 export type NodeProps = {
   ref: RefObject<Vector3>;
-  selected?: RefObject<Vector3>;
-  setSelected: (ref: RefObject<Vector3> | undefined) => void;
   name: string;
+  position?: [number, number, number];
 };
 
-export function Node({ ref, selected, setSelected, name }: NodeProps) {
-  const meshRef = useRef<Mesh>(null);
-  const [isOver, { onPointerOver, onPointerOut }] = useMeshOver();
-  const hasTransform = !selected || Object.is(selected, ref);
+export function Node({ ref, name, position }: NodeProps) {
   const gltf = useGLTF(`/assets/${name}.glb`);
+  const settings = useAtomValue(settingsAtom);
+  const transformControlsRef = useRef<any>(null);
+
+  const handleChange = () => {
+    if (ref.current && transformControlsRef.current?.object) {
+      ref.current.copy(transformControlsRef.current.object.position);
+    }
+  };
+
+  if (position) {
+    settings.gizmo = false;
+  }
+
   return (
     <>
       <TransformControls
+        ref={transformControlsRef}
         mode="translate"
-        showX={hasTransform}
-        showY={hasTransform}
-        showZ={hasTransform}
-        onPointerOver={(e) => {
-          if (hasTransform) {
-            onPointerOver(e);
-            setSelected(ref);
-          }
-        }}
-        onPointerOut={() => {
-          if (isOver) {
-            onPointerOut();
-            setSelected(undefined);
-          }
-        }}
+        showX={settings.gizmo}
+        showY={settings.gizmo}
+        showZ={settings.gizmo}
+        position={position}
+        onChange={handleChange}
       >
-        {
-          <primitive
-            ref={meshRef}
-            rotation={[10, 10, 0]}
-            object={gltf.scene.clone()}
-          />
-        }
+        {<primitive rotation={[0, 0, 0]} object={gltf.scene.clone()} />}
       </TransformControls>
     </>
   );
