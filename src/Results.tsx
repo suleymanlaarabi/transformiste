@@ -26,7 +26,7 @@ export default function Results() {
                 <Heading marginLeft={"auto"} marginRight={"auto"}>
                     It's time for the results!
                 </Heading>
-                <Flex direction={"row"} marginLeft={"auto"} marginRight={"auto"} marginTop={"auto"} marginBottom={"auto"}>
+                <Flex direction={"column"} marginLeft={"auto"} marginRight={"auto"} marginTop={"auto"} marginBottom={"auto"}>
                     <Grid
                         h="200px"
                         templateRows="repeat(2, 1fr)"
